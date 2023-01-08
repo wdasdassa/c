@@ -1,0 +1,387 @@
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//#include<string.h>
+//#include<math.h>
+//void exchange(int x,int y)//void 是指函数没有返回值
+//{
+//	int m = 0;
+//	m = x;
+//	y = x;
+//	x = m;
+//
+//}//失效原因是函数exchange中的x，y，和main函数中的a，b地址不一样
+////在执行函数是x，y又申请了新的内存，函数中x，y的值发生改变 ，但exchange函数
+////只是把a，b的值传给了x，y,形参与实参无联系。故函数无法修改a，b的值。要想修改a，b的值，需要
+////使x，y和a，b的地址一样，即函数exchange要把a，b的地址传过去，运用指针修改。
+//int main()
+//{
+//	int a =20;
+//	int b =10;
+//	printf("a=%d,b=%d\n", a, b);
+//	exchange(a, b);//传值调用，函数的形参与实参分别占有不同的内存块，对形参的改变不会影响实参。
+//	printf("a=%d,b=%d\n", a, b);//两次结果一样，exchange函数失效
+//	return 0;
+//}
+//void exchange(int* x,int* y)//形参是指函数名后括号中的变量，因为形式参数只有函数在
+//{                           //调用的过程中才会实例化（分配内存单元）叫形式参数。
+//	int m = 0;              //形式参数用完后自动销毁，因此形式参数只在函数中有效。
+//	m = *x;
+//	*x = *y;
+//	*y = m;
+//
+//
+//}
+//int main()
+//{
+//	int a = 10;//真实传给函数的参数，叫实参。实参可以是：常量，变量，表达式，函数等；get_max(100,300),get_max(2+1,get_max(9,10))
+//	int b = 20;//无论实参是什么类型，在进行函数调用时，他们必须有确定的值，以便把这些值传给形参。
+//	printf("a=%d,b=%d\n", a, b);
+//	exchange(&a, &b);//传址调用，把函数外部创建变量的内存地址传递给函数参数的一种函数调用方式
+//	printf("a=%d,b=%d\n", a, b);//这种调用方式可以让函数与函数外边的变量建立起真正的联系，也就是函数内部可以操纵函数外部的变量
+//	
+//
+//
+//
+//
+//	return 0;
+//}
+//int is_prime(int n)
+//{
+//	int m = 0;
+//	for (m = 3; m <=sqrt(n); m += 2)
+//	{
+//		if (n % m == 0)
+//			return 0;
+//	}
+//		return 1;
+//}
+//
+//int main()
+//{
+//	int m = 0;
+//	int i = 0;
+//	for (i = 101; i <= 200; i += 2)
+//	{
+//
+//		if (is_prime(i) == 1)
+//		{
+//			printf("%d ", i);
+//			m++;
+//		}
+//
+//	}
+//
+//	printf("\n%d", m);
+//
+//	return 0;
+//}
+
+
+//#include<string.h>
+//int search(int arr[], int finger, int length)//这里的arr[]本质上其实是指针。
+//{
+//	int mid = 0;
+//	int left = 0;
+//	int right = length-1;
+//	while (left <= right)
+//	{
+//		mid = (right + left) / 2;
+//		if (arr[mid] == finger)
+//			return mid;
+//		if (arr[mid] > finger)
+//			right = mid-1;
+//		if (arr[mid] < finger)
+//			left = mid+1;
+//	}
+//	return 0;
+//
+//
+//}
+//
+//int main()
+//{
+//	int arr[] = { 2,5,8,45,78,95,121,224,225,228,456,498,578 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int k = 0;
+//	scanf("%d", &k);
+//	int m= search(arr,k,sz);//数组传递的时候是首元素的地址，但是数组的地址是连续的，所以只要知道数组的长度，就能通过首元素的地址推出其他元素的地址
+//	if (m !=0)
+//		printf("找到了下标为%d\n",m);
+//	else
+//		printf("没找到");
+//	return 0;
+//}strlen是计算字符串的长度不包括'\0'
+//用sizeof计算字符串是计算占用内存多少字节包括'\0'
+
+//void add(int* x)
+//{
+//	*x = ( *x)++;//不能写完*x++，++的优先级高于*x，++会先作用于x上；可以写为（*x）++
+//		
+//
+//
+// }
+//int main()
+//{
+//	int num = 0;
+//	while(num<=99)
+//	add(&num);
+//	printf("%d", num);
+//
+//
+//
+//	return 0;
+//}
+//int main()
+//{
+//	printf("%d", '"');//34
+//
+//
+//	return 0;
+//}
+//int main()//链式访问，把一个函数的返回值作为另一个的参数
+//{
+//	printf("%d", printf("%d", printf("%d", 43)));
+//	//printf("%d", printf("%d", printf("%d", 43)))这个printf函数打印的是printf("%d", printf("%d", 43))的返回值//1
+//	//printf("%d", printf("%d", 43))这个printf函数打印的是printf("%d", 43)的返回值//2
+//	//printf("%d", 43)这个printf函数打印的是43
+//	//printf的返回值是函数所打印的字符数目；
+//	return 0;
+//}
+//#include"Add.h"//引用自己的头文件用""
+//int main()
+//{
+//
+//	int a = 10;
+//	int b = 20;
+//	
+//	printf("%d", Add(a, b));
+//
+//	return 0;
+//
+//}
+//嵌套调用
+//void new_line()
+//{
+//
+//
+//	printf("hehe\n");
+//}
+//void three_line()
+//{
+//	int i = 0;
+//	for (i = 1; i <= 3; i++)
+//		new_line();
+//
+//
+//}
+//int main()
+//{
+//
+//	three_line();
+//	return 0;
+//
+//
+//}1234
+//递归是一个函数调用自己的过程；
+//void print(int x)
+//{
+//	if (x > 9)
+//		print(x / 10);
+//	printf("%d ", x % 10);
+//}
+//假设输入的数字为123；我们要打印的是1 2 3 。       3很好打印即123%10=3。打印出来即可；
+//2可以是12%10=2；1是1%10；、
+//进入函数123>9,故再次调用一次print函数，此时第一次调用的print函数还未结束。
+//第二次进入函数输入的是12，12>9，再次调用print函数，此时第二次调用的print函数也还未结束；
+//第三次进入函数1<9，if语句不成立，执行打印1%10；即打印1，打印结束，返回第二次的函数，执行打印12%10
+//即打印2，打印结束，返回第一次的函数，执行123%10；即打印3；最后函数完全结束回到主函数；
+//int main()
+//{
+//	int m = 0;
+//	scanf("%d", &m);
+//	print(m);
+//	return 0;
+//}
+//递归存在的两个必要条件
+//存在限定条件，当满足这个限定条件是递归便不再继续
+//每次递归调用之后越来约接近这个限定条件
+//求字符串的长度
+//int my_strlen(char* str)
+//{
+//	int count = 0;
+//	while (*str != '\0')//当读取到最后'\0',则证明字符已经结束；
+//	{
+//		count++;
+//		str++;//str存放的是首个字符的地址，str++，即首字符的地址加1，就是第二个字符的地址；
+//	}
+//	return count;
+//}//运用循环来写；
+//int my_strlen(char* str)
+//{
+//	if (*str != '\0')
+//		return 1 + my_strlen(str+1);//str+1，是把首字符的地址加一得到第二个字符，my_strlen就会从第二个字符开始录入。
+//	else
+//		return 0;
+//}
+////第一次进入函数第一个字符为'h'！='\0',就返回1+my_strlen(str+1).
+////第二次进入函数读取的是"ello"第一个字符为'e'！='\0',就返回1+my_strlen(str+1).
+////第三次进入函数读取的是"llo"第一个字符为'l'！='\0',就返回1+my_strlen(str+1).
+////第四次进入函数读取的是"lo"第一个字符为'l'！='\0',就返回1+my_strlen(str+1).
+////第五次进入函数读取的是'o'第一个字符为'o'！='\0',就返回1+my_strlen(str+1).
+////第六次进入函数读取的是'0'第一个字符为'\0'='\0',就返回0.
+////一共就是1+1+1+1+1=5;五个字符
+//int main()
+//{
+//	char arr[] = "hello";
+//	my_strlen(arr);//arr是数组，数组传参，传的不是整个数组，是第一字符的地址
+//	printf("%d", my_strlen(arr));
+//	return 0;
+//}
+//int main()
+//{
+//	printf("hehe\n");
+//	main();
+//
+//
+//	return 0;
+//}//会出现栈溢出的文体，函数的调用都在栈区调用空间，栈区存放局部变量，函数形参等；
+//堆区存放动态开辟的内存
+//静态区存放全局变量，static修饰的变量；
+//int fac(int x)
+//{
+//	int f = 1;
+//	int m = 1;
+//	for (m = 1; m <= x; m++)
+//	{
+//		f = f * m;
+//
+//	}
+//	return f;
+//}运用循环的方式计算n的阶乘；
+//int fac(int x)
+//{
+//	if (x > 1)
+//		return x * fac(x - 1);
+//	else
+//		return 1;
+//
+//}//用递归的方式求n的阶乘
+//int main()
+//{
+//	int a = 0;
+//	scanf("%d", &a);
+//	printf("%d",fac(a));
+//	return 0;
+//}
+//int fib(int x)
+//{
+//	if (x > 2)
+//		return fib(x - 1) + fib(x - 2);
+//	else
+//		return 1;
+//
+//}//计算次数太多，效率极低；
+//int main()
+//{
+//
+//	int a = 0;
+//	scanf("%d", &a);
+//	printf("%d", fib(a));
+//	
+//	return 0;
+//}
+//int fib(int x)
+//{
+//	int f = 0;
+//	int c = 0;
+//	int j = 1;
+//	int m = 1;
+//	if (x <= 2)
+//		return 1;
+//	for (f = 3; f <= x; f++)
+//	{
+//		c = j + m;       //1 1 2 3 5 8 13 21 34 55
+//		j = m;           //a b c计算第三个斐波那契数 然后让 a=b,b=c,
+//		m = c;           //  a b c计算第四个斐波那契数然后让 a=b,b=c,
+//	}                    //    a b c计算第五个斐波那契数以此类推
+//	return c;
+//}
+//int main()
+//{
+//	int a = 0;
+//	scanf("%d", &a);
+//	printf("%d", fib(a));
+//
+//
+//
+//	return 0;
+//}
+//void move(char a, char b)
+//{
+//	printf("%c->%c ",a ,b);
+//}
+//void hanoi(int n,char pos1, char pos2, char pos3)
+//{
+//	if (1 == n)
+//		move(pos1, pos3);
+//	else//移动汉诺塔，a柱上放了n个盘子，大盘在下，小盘在上，b柱上不放盘中。一次移动一个，并且保证在移动过程保持小盘在上，大盘在上。                           
+//	{   //移动过程中我们首先把a柱（起始位置）上最大的盘子上的n-1个盘中借助c柱（中转位置）移动到b柱（最终位置）
+//		//再把a柱上的最大的盘中移动到c柱上，最后将b柱（起始位置）上的n-1个盘中借助a柱（中转位置）移动到c柱（最终位置）上，结束。
+//		hanoi(n - 1,pos1, pos3, pos2);//（起始位置，中转位置，最终位置）首先把a柱（起始位置）上最大的盘子上的n-1个盘中借助c柱（中转位置）移动到b柱（最终位置）
+//		move(pos1, pos3);             //把最大的盘中移动到c柱
+//		hanoi(n - 1, pos2,pos1, pos3);//（起始位置，中转位置，最终位置）将b柱（起始位置）上的n-1个盘中借助a柱（中转位置）移动到c柱（最终位置）上
+//	}
+//}//递归
+//
+//
+//int main()
+//{    
+//	
+//	hanoi(1,'A','B','C');
+//	printf("\n");
+//	hanoi(2, 'A', 'B', 'C');
+//	printf("\n");
+//	hanoi(4, 'A', 'B', 'C');
+//	printf("\n");
+//	return 0;
+//
+//}
+//青蛙跳台阶
+
+//int stage(int x)
+//{                 //分析可知青蛙跳台阶，一次跳一阶，或两阶；当只有一阶台阶是只有一种跳法，当只有两阶台阶是有两种跳法。
+//	int a = 1;    // 即n==1时 有1种，n==2时 有两种，当n==3，分为两种情况
+//	              //1.青蛙如果第一次跳一阶台阶还剩两阶台阶有两种跳法
+//	int b = 2;    //2.青蛙如果第一次跳两阶台阶还剩一阶台阶有一种跳法
+// 	int c = 0;    //一共是1+2=3种跳法。当n==3时有三种跳法。即n==1时的跳法和n==2时的跳法之和。
+//	if (x == 1)   //当n==4时分为两种情况
+//		return 1; //1.青蛙如果第一次跳一阶台阶还剩三阶台阶有三种跳法
+//	if (x == 2)   //2.青蛙如果第一次跳两阶台阶还剩两阶台阶有二种跳法
+//		return 2; //一共是3+2=5种跳法。当n==4时有五种跳法。即n==3时的跳法和n==2时的跳法之和。
+//	for (int i = 3; i <= x; i++)//由此可推断出青蛙如果跳n阶台阶，stage(n)=stage(n-1)+stage(n-2)
+//	{                           
+//		c = a + b;
+//		a = b;
+//		b = c;
+//	}
+//	return c;
+//
+//}
+//int stage(int x)
+//{
+//	if (x == 1)
+//		return 1;
+//	if (x == 2)
+//		return 2;
+//	else
+//		return stage(x - 1) + stage(x - 2);
+//
+//}//用递归来实现青蛙跳台阶，但计算次数太多，计算效率低。
+//int main()
+//{
+//	int m = 0;
+//	scanf("%d", &m);
+//	printf("%d", stage(m));
+//	return 0;
+//}

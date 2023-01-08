@@ -1,0 +1,76 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//while语句结构为
+//while（表达式）
+// 循环语句；超过两句就要加上大括号，最后是一直加上。
+//先判断表达式是否为真，如果为真执行语句，执行结束后
+// 再次判断表达式是否为真，为真重复以上的步骤，直至表达式
+// 为假，循环结束。
+//
+//
+//int main()
+//{
+//	int i = 1;
+//	while (i <= 10)
+//	{
+//		printf("%d\n", i);
+//		i++;
+//	}
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 1;
+//
+//	
+//	while (i <= 10)
+//
+//	{
+//		if (4 == i)
+//			break;//如果在循环中遇到break，就会停止后期的所有循环，直接结束循环；
+// 	   printf("%d\n", i);
+//	  i++;
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	while (i <= 10)
+//	{
+//		if (4 == i)
+//			continue;//如果在循环中遇到continue，则在本次循环中continue后的代码
+//		printf("%d\n", i);//不再执行直接跳到while去判断表达式真假真假
+//		i++;
+//
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	while (i <= 500)
+//	{
+//		i++;
+//		if (450 == i)
+//		{
+//			printf("中了500万彩票，迎娶白富美\n");
+//			break;
+//		}
+//		if (25 == i || i == 50 || i == 100)
+//		{
+//			printf("职位提升\n");
+//			continue;
+//		}
+//		printf("努力学习\n");
+//	}
+//	return 0;
+//}
+int main()
+{
+	int ch = 0;//getchar是读入函数，它从标准输入中读取下一个字符，返回类型为int，为用户输入的ASCII码或EOF；
+	while ((ch = getchar()) != EOF)//EOF end of file
+		putchar(ch);//ctrl+z结束程序，
+	return 0;
+}//%为取余的即4%3=1；/号为除法运算即8/4=2，9/4=2；

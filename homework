@@ -1,0 +1,442 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<math.h>
+#include<string.h>
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		if (i = 5)
+//			printf("%d\n", i);//死循环打印5，因为i=5，是把五赋值给i，5！=0，为正
+//	}                         //所以条件成立，每次都会把五赋值给i，所以是死循环。
+//
+//
+//
+//	return 0;
+//}
+////switch()括号里面放到可以说char类型的，因为char储存的是字符所对应的ASCII码值，为整形
+
+//int main()
+//{
+//	
+//	int n = 0;
+//	int a = 0;
+//	int b = 0;
+//	int c = 0;
+//	scanf("%d%d%d", &a, &b, &c);
+//	
+//	
+//		if (a < b)
+//		{
+//			n = b;
+//			b = a;
+//			a = n;
+//		}
+//		if (a < c)
+//		{
+//			n= c;
+//			c = a;
+//			a = n;
+//		}
+//		if (b < c)
+//		{
+//			n = c;
+//			c = b;
+//			b = n;
+//		}	
+//
+//	printf("%d>%d>%d", a, b, c);
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int c = 0;
+//	int max = 0;
+//	scanf("%d%d%d", &a, &b, &c);
+//	a = (a > b ? a : b);
+//	a = (a > c ? a : c);
+//	max = a;
+//	printf("%d",max );
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 1;
+//	for (; i <= 100; i++)
+//	{
+//		if (i % 3 == 0)
+//			printf("%d\n", i);
+//
+//	}
+//
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	int c = 0;
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d%d", &a, &b);
+//	if (a < b)
+//	{
+//		c = b;
+//		b = a;
+//		a = c;
+//	}
+//	for (i = b; i <= b; i--)
+//	{
+//		if (a % i == 0 && b % i == 0)
+//		{
+//			printf("%d", i);
+//			break;
+//		}
+//
+//	}
+//
+//	return 0;
+//}
+//求最大公约数辗转相除法即a，b的最大公约数与a，b中较小的数和a%b的最大公约数相同。
+//a,b,c,d,r均为正整数。a>b
+// d为a，b的一个公约数。a可以写为cb+r。
+// 即a=cb+r；
+// r=a-cb
+// 两边同是除以d
+// （r/d）=a/d-(cb/d)
+// 等式右边为正整数。故d为r，和b的公约数
+// 即r与b的公约数与a，b的公约数相同
+// 故二者最大公约数也相同。
+//int main()
+//{
+//	int m = 0;
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d%d", &a,& b);
+//	while (a % b)//当a%b！=0是执行循环，a%b=0不执行循环。可以将
+//	{             //判断条件改为m=a%b，可以提高效率。
+//		m = a % b;//此处判断条件无需调节a，b大小，循环语句自动调节。
+// 		a = b;    //当a<b时，a=3，b=9；a%b=a
+//		b= m;     //第一次循环结束后b==a；a==b，自动调节为a>b.
+//		          //编写此类代码可以直接按照a>b编写。
+//	}
+//	printf("%d", b);
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	for (i = 1000; i <= 2000; i++)
+//	{
+//		if (i % 400 == 0)
+//			printf("%d\n", i);
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int year = 1000;
+//	do 
+//	{
+//		printf("%d\n", year);
+//		year += 4;
+//	}
+//	while (year <= 2000);
+//		return 0;
+//}
+//int main()//如果一个数m是素数，那m就可以写出m=a*b；a和b之中有一个小于等于m的开平方
+//{         //如果m可以被2-sqrt（m）中的一个数整除则肯定不是素数
+//	int j = 0;//相反如果m不能被2-sqrt（m）中的一个数整除则肯是素数
+//	int k = 0;
+//	int m = 0;
+//	int i = 100;
+//	for (i=101; i <= 200; i+=2)//素数一定是奇数
+//	{
+//		
+//		for (m = 3; m <= sqrt(i); m+=2)//奇数不能被偶数整除，一个奇数如果被奇数整除则不是素数
+//		{                 
+//			if (i % m == 0)
+//				break;
+//		}
+//		
+//		if (m >sqrt( i))//如果m>sqrt(i)则肯定是素数
+//		{
+//			printf("%d\n", i);
+//			j++;
+//		}
+//	}
+//	printf("%d\n", j);
+//	return 0;
+//}
+//int main()
+//{
+//	int j = 0;
+//	int k = 0;
+//	int m = 0;
+//	int i = 100;
+//	for (i = 100; i <= 200; i++)
+//	{
+//
+//		for (m = 2; m <i; m++)
+//		{
+//			if (i % m == 0)
+//				break;//不是素数跳出循环；
+//		}
+//		//跳出循环有两种情况1，是素数m=i。 2，不是素数m<i.再用if语句判断
+//		if (m ==i)
+//		{
+//			printf("%d\n", i);
+//			j++;
+//		}
+//	}
+//	printf("%d\n", j);
+//	return 0;
+//}
+//int main()//数一下1-100的整数中有9的数的数量
+//{
+//	int i = 0;              //如果一个数的个位为9，则它%10=9，如果十位为9，则它/10=9；
+//	int a = 0;
+//	for (; a <= 100; a++)
+//	{
+//		if (a % 10 == 9 || a / 10 == 9)
+//			i++;
+//	}
+//	printf("%d", i);
+//	return 0;
+//}       
+//计算1/1-1/2+1/3-1/4+1/5-1/6+....+1/99-1/100
+//int main()
+//{
+//	int flag = 1;
+//	double sum = 0;
+//	int i = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//	   sum=	sum+ flag*1.00 / i;//因为我们要的是浮点数，i为整数，所以1要为浮点数，写为1.0
+//	   flag = -flag;
+//
+//
+//	}
+//	printf("%lf\n", sum);
+//
+//
+//
+//	return 0;
+//}
+//int main()//分组求和
+//
+//{
+//	int i = 0;
+//	double sum1 = 0;
+//	double sum2 = 0;
+//	for (i = 1; i <= 100; i += 2)
+//	{
+//		sum1 += 1.00 / i;
+//	}
+//	for (i = 2; i <= 100; i += 2)
+//	{
+//		sum2 += 1.00 / i;
+//	}
+//	sum1 - sum2;
+//	printf("%lf\n", sum1 - sum2);
+//	return 0;
+//}
+//int main()
+//{
+//	
+//	double n = 0;
+//	double sum = 0;
+//	int i = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		if (i % 2 == 1)
+//			n =  1.00 / i;
+//		if (i % 2 == 0)
+//			n = ( - 1) * 1.00 / i;
+//		sum = sum + n;
+//
+//
+//	}
+//	printf("%lf\n", sum);
+//
+//	return 0;
+//}
+//int max(int a, int b)
+//{
+//	if (b > a)
+//		return b;
+//	else
+//		return a;
+//}
+//int main()
+//{
+//	int i = 0;
+// 	int arr[10]={-1,-8,-3,-78,-565,-687,-700,-85,-97,-160};
+//	/*scanf("%d", &arr);*/
+//	for (i = 0; i < 9; i++)
+//	{
+//		arr[0] = max(arr[0], arr[i + 1]);
+//
+//
+//	}
+//	printf("%d", arr[0]);
+//
+//	return 0;
+//
+//}
+//int main()
+//{
+//	int arr[] = { 45,-45,456,98,62,462,41,891,-56,111 };
+//	int max = arr[0];
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 0; i < sz; i++)
+//	{
+//		if (arr[i] > max)
+//			max = arr[i];
+//	}
+//	printf("%d", max);
+//
+////	return 0;
+////}
+//int main()
+//{
+//	int a = 0;
+//	char arr[] = { 'a','b','c','f','\0'};
+//	int m = strlen(arr);
+//	int arr1[] = { 1,2,3 };
+//	printf("%d\n", m);
+//
+//
+//	return 0;
+//}
+//int main()//打印99乘法表
+//{
+//	int k = 0;
+//	int m = 0;
+//	int i = 0;
+//	for (i = 1; i <= 9;i++)
+//	{   
+//		for (m = 1; m <= i; m++)
+//		{
+//			k= m * i;
+//			printf("%d*%d=%-2d  ",i,m, k);//%2d意思是打印两位数，没有两位用空格补，为向右对齐即把空格补到十位
+//			                              //%-2d意思是打印两位数，没有两位用空格补，为向左对齐即把空格补到个位
+//		}
+//		printf("\n");
+//	}
+//
+//
+//
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int right = 0;
+//	int left = 0;
+//	int arr[] = { 1,5,7,8,9,12,45,78,89 };
+//	int mid = 0;
+//	right = sizeof(arr) / sizeof(arr[0])-1;
+//	printf("请输入要查找的数字\n");
+//	scanf("%d",& a);
+//	while (left <= right)
+//	{
+//		mid = (right + left) / 2;
+//		if (arr[mid] == a)
+//		{
+//			printf("找到了下标为%d", mid);
+//			break;
+//		}
+//		if (arr[mid] > a)
+//			right = mid - 1;
+//		else
+//			left = mid + 1;
+//		if (left > right)
+//			printf("找不到");
+//
+//	}
+//
+//
+//
+//	return 0;
+//}
+#include<stdlib.h>
+#include<time.h>
+#include<stdio.h>
+#define _CRT_SECURE_NO_WARNINGS
+#include<math.h>
+#include<string.h>
+//void menu()//menu 是生成菜单的意思应为他没有返回的值和接受的值，void 关键字指定函数不返回值
+//{
+//	printf("*********************\n");
+//	printf("*****1.PLAY**********\n");
+//	printf("*****0.EXIT**********\n");
+//	printf("*********************\n");
+//}
+//void game()
+//{
+//	int m = 0;
+//	int ret = 0;
+//	ret = rand() % 100 + 1;//将ret控制在1-100间
+//	  while (1)
+//	  {
+//		  printf("请输入猜的数字：\n");
+//		  scanf("%d", &m);
+//		  if (m > ret)
+//			  printf("猜大了\n");
+//		  else if (m < ret)
+//			  printf("猜小了\n");
+//		  else
+//		  {
+//			  printf("恭喜你猜对了\n");
+//			  break;
+//		  }
+//	  }
+//}
+//int main() //unsigned int 意思是强行转化为无符号的int类型
+//{                                    //用时间戳为srand函数提供一个不断变化的值。
+//	srand((unsigned int)time(NULL));// time 函数根据系统时钟返回自协调世界时(UTC) 1970 年 1 月 1 日午夜(00:00 : 00) 以来经过的秒数。
+//	int choice = 0;                 //NULL 是用于许多指针操作和函数的 null 指针值。 它等效于 0。
+//	do                               //srand函数设置 rand 函数使用的伪随机数生成器的起始种子值。
+//	{                                //srand函数在整个程序里只用设置一次就行了，执行的太多随机数就不随机了
+//		menu();
+//		printf("请输入您的选择：\n");
+//		scanf("%d", &choice);
+//		switch (choice)
+//		{
+//		case(1):
+//				game();
+//				system("pause");//停顿
+//				system("cls");//清屏
+//				break;
+//		case(0):
+//				printf("程序退出\n");
+//					break;
+//		default:
+//			system("cls");
+//			break;
+//
+//		}	
+//		
+//	} while (choice);
+//	return 0;
+//}
+int main()
+{
+	char m[20] = { 0 };
+	system("shutdown -s-t 60");//system是执行系统命令的"shutdown -s-t 60"是在一分钟后关机。
+	printf("你的电脑将在一分钟后关机\n，输入我是猪取消关机\n请输入：");
+again:
+	scanf("%s", &m);
+	if (strcmp(m, "我是猪") == 0)
+		system("shutdown -a");
+	else
+		goto again;//goto从此处跳到上面的again。
+	return 0;
+}

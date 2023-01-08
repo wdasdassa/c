@@ -1,0 +1,81 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int age = 55;
+	/*if (age < 18)
+	printf("未成年\n");*/
+	/*if (age < 18)
+		printf("未成年\n");
+	else
+		printf("成年人\n");*/
+	/*if (18 <= age < 30)//括号内不能写为18<=age<30的，写法是错误，
+    printf("青年\n");*///这样写会先执行判断age是否大于18,然后由判断
+	if (age<18)//////////////值再判断是否小于30；若age=15；先判断15是否
+		printf("未成年\n");//大于18，结果是否即0；然后判断0是否小于30，结果
+	else if(age>=18&&age<30)//为真，即打印青年；
+		printf("青年\n");
+	else if(age>=30&&age<50)
+		printf("中年\n");
+	else 
+		printf("老年\n");
+
+	if (age < 18)
+	{
+		printf("未成年\n");
+		printf("不能谈恋爱\n");
+	}//如果if控制多条语句需要加上大括号（代码块）
+	//else也是如此
+	else
+	{
+		printf("成年\n");
+		printf("可以谈恋爱\n");
+	}
+	int a = 0;
+	int b = 2;
+	if (a == 1)
+		if (b == 2)
+			printf("hehe\n");
+		else
+			printf("haha\n");
+	//else与只最近的if保持对齐；
+	if(a == 1)
+		if (b == 2)
+			printf("hehe\n");
+	else
+			printf("haha\n");//两次结果输出一样；
+	if (a == 1)
+	{
+		if (b == 2)
+			printf("hehe\n");
+	}
+	else
+			printf("haha\n");
+	int  d = 4;
+	if (d = 5)//这里的d=5是把5赋值给了d；不是判断是否d等于5；故代码成立；
+		printf("hehe\n");
+	if (d==5)
+		printf("hehe\n");
+	if (5==d)
+		printf("hehe\n");//这样写可以有效的避免错误
+
+
+	return 0;
+
+}
+//if (condition)
+//{
+//	return x;
+//}
+//return y;
+// 
+//两个代码是一样的即如果条件成立返回x；不成立返回y；但第一种的可读性不高；容易产生误解；
+//if (condition)
+//{
+//	return x;
+//
+//}
+//else
+//{
+//	return y;
+//}

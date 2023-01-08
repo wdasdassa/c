@@ -1,0 +1,181 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+/*int MAX(int x, int y)
+{
+	if (x > y)
+		return x;
+	else
+		return y;
+}
+#define MAx(x,y)(x>y?x:y)*/
+ /*void test()
+ {
+	static int a = 1;
+	a++ ;
+	printf("a的值为%d\n", a);
+
+ }*/
+//int main()
+//{
+//	/*int a = 94;
+//	int b = 90;
+//	int max = 0;
+//	int m = 0;
+//	
+//	max=MAX(a, b);
+//	printf("最大值为%d\n", max);
+//	m = MAx(a, b);
+//	printf("最大值为%d\n", m);*/
+//	int i = 0;
+//	while (i <= 10)
+//	{
+//		/*printf("i的值为%d\n", i);*/test();
+//		i++;
+//
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	long  a = 0;
+//	&a;
+//	long* p = &a;
+//	printf("%p\n", &a);
+//	*p = 20;
+//	printf("%d\n", a);
+//	printf("%d\n", sizeof(*p));
+//	printf("%d\n", sizeof(a));
+//
+//	return 0;
+//}
+//struct human
+//{
+//	char name[20];
+//	char sex[8];
+//	short IDnum;
+//	short price;
+//};//描述复杂对象
+////利用结构体类型-创建一个该类型的结构体变量；
+//int main()
+//{   struct human h1={"张三","女",55,10};
+//	printf("姓名:%s\n", h1.name);
+//	printf("性别:%s\n", h1.sex);
+//	printf("身份证号码:%d\n", h1.IDnum);
+//	h1.price = 15;
+//	strcpy(h1.name, "李四");//修改name，sex等字符串要用库函数strcpy（目的的	，操作值）string-copy
+//	printf("修改后的价格:%d\n", h1.price);//.结构体变量.成员，.是操作符。
+//	struct human* pb = &h1;
+//	printf("姓名:%s\n", (*pb).name);
+//	printf("性别:%s\n", (*pb).sex);
+//	printf("身份证号码:%d\n", (*pb).IDnum);//指针的方法打印
+//	printf("姓名:%s\n", pb->name);
+//	printf("性别:%s\n", pb->sex);
+//	printf("身份证号码:%d\n", pb->IDnum);//更简洁的方法。结构体指针->成员,->是操作符
+//	char a[4] = {'a','b','c'};//隐藏了一个'\0'
+//	char b[3] = { 'a','b','c' };//超出字符串的长度还有一个隐藏的'\0'
+//	char m[] = { 'a','b','c' };
+//	char n[] = { 'a','b','c','\0' };
+//	char k[] = { 'a','b','c','\0','a','b','c' ,'\0' };
+//	printf("%s\n", a);
+//	printf("%s\n", b);
+//	printf("%s\n", m);
+//	printf("%s\n", n);
+//	printf("%s\n", k);
+//	return 0;
+//}
+//结构体是一些值的集合，这些值称为成员变量，结构的每个成员可以是不同类型的变量
+//结构体声明
+// struct tag
+// {
+// member_list;//成员名
+// }varible_list;//变量名
+// 结构成员可以是标量，数组，指针，其他结构体
+//结构体变量访问成员，结构体变量的成员是通过操作符(.)来访问的，(.)操作符接受两个操作数。
+// 结构体传参要传结构体地址
+//struct Stu//struct结构体关键字，Stu-结构体标签，struct Stu 结构体类型
+//{
+//	char name[20];
+//	short age;
+//	char phone[12];
+//	char sex[5];
+//
+//
+//
+//}s1,s2,s3;//定义一个结构体类型,s1,s2,s3是全局结构体变量
+//typedef struct Stu
+//{
+//
+//	char name[20];
+//	short age;
+//	char phone[12];
+//	char sex[5];
+//
+//
+//}Stu;//把struct Stu 重新命名为Stu。重命名后 struct Stu 仍可以使用。
+//int main()
+//{
+//	struct Stu s={"张三",12,"123456","男"};//利用结构体类型创建结构体变量s；s是局部变量和s1，s2,s3类型相同
+//	Stu s1={"旺财",30,"1354665","男"};
+//	return 0;
+//}
+//struct S
+//{
+//	int a;
+//	char b;
+//	float c;
+//	double d;
+//};
+//struct T
+//{    
+//	struct S s1;
+//	int arr[10];
+//	int* p;
+//	char arr1[10];
+//	char* arr2[20];
+//};
+//int main()
+//{
+//	char arr[12] = { 0 };
+//	struct T t = { {1,'2',3.1,3.14},{1,2,5,4,},NULL,"sadada",arr};//结构体中包含结构体，包含的结构体也要初始化
+//	printf("%s\n", t.arr1);
+//	struct T* pc = &t;
+//	printf("%s\n", pc->arr1);
+//	printf("%lf\n", t.s1.d);
+//	printf("%lf\n", pc->s1.d);
+//
+//
+//	return 0;
+//}
+//typedef struct Stu
+//{
+//	char name[5];
+//	char phone[12];
+//	short age;
+//}Stu;
+//void print1(Stu s1)//需要创建一个临时变量s1，并将s的内容拷贝进入s1内，需要空间大，拷贝也要时间。
+//{
+//	printf("%s\n", s1.name);
+//	printf("%s\n", s1.phone);
+//	printf("%d\n", s1.age);
+//}
+//void print2(Stu* p)//只需传入s的地址，所需内存小
+//{
+//	printf("%s\n", p->name);
+//	printf("%s\n", p->phone);
+//	printf("%d\n", p->age);
+//}
+//int main()
+//{
+//	Stu s = { "张三","1231231231",12 };
+//	print1(s);
+//	print2(&s);//print2的方法更好
+//	           //print1函数在传参时，参数是需要压栈的，如果传递一个结构体对象的时候，结构体过大，参数压栈的系统开销大
+//	           //所以会导致性能下降。
+//	           
+//	return 0;
+//}
+//栈区存放局部变量，函数的调用，函数的形参。
+//add(a,b)从右向左传参。栈区插入一个元素是压栈，删除一个元素是出栈。
+//栈区是先传入后出，后传入先出。
+//栈区插入元素必须插到栈区元素的上方，一层一层向上垒。下面是高地址，上面是低地址。

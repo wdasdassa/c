@@ -1,0 +1,159 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//int main()
+//{
+//	int m = 0;
+//	char passward[20] = { 0 };
+//	printf("请输入密码:>");
+//	scanf("%s", &passward);//scanf在接受输入时，会在输入缓冲区提取自己想要的值
+//	getchar();//如我们输入密码123456然后回车，就会在输入缓冲区生成123456\n,'\n'
+//	printf("请确认（T/F):");//为换行即回车，它的ASCII值为10，scanf只从缓冲区中提取
+//	m = getchar();//123456，还剩余一个'\n'。此时我们需要用getchar把缓冲区清空，由
+//	if (m == 'T')//我们不使用’\n'，对我们没有所以不用给getchar一个返回值；
+//		printf("确认成功\n");//但是如果我们不添加getchar清空缓存区那么第十一行的getchar就会接受
+//	else                     //'\n',m的值就会为10；程序就不会符合我们的预期。
+//		printf("确认失败\n");
+//	return 0;
+//}
+//int main()
+//{
+//	int ch = 0;
+//	int m = 0;
+//	char passward[20] = { 0 };
+//	printf("请输入密码:>");//如果我们输入密码时输入了123456空格ABCD；
+//	scanf("%s", &passward);//scanf只会接受空格前面的数字即123456，还剩余
+//	while ((ch = getchar()) != '\n')
+//	{
+//		;//空语句
+//	}//空格ABCD'\n',此时一个getchar不足以把缓存区清空，可以改为一个
+//	printf("请确认（T/F):");//while语句，判断语句为 (ch=getchar())!='\n'
+//	m = getchar();//当ch='\n'时则表明缓存区被清空。
+//	if (m == 'T')//
+//		printf("确认成功\n");//
+//	else                     //
+//		printf("确认失败\n");
+//	return 0;
+//}
+//for循环语法
+//for(表达式;表达式2;表达式3)
+//     循环语句    ;
+//表达式1为初始化部分只执行一次，表达式2为判断部分，表达式3为调整部分。
+//不可在for循环中修改循环变量，防止for循环失去控制。
+//建议for语句的循环控制变量的取值采用“前闭后开区间”的写法
+
+//int main()
+//{
+//	int i = 0;
+//	for (; ; )
+//	{
+//		printf("哈哈\n");//for循环的初始化，判断，调整都可以省略
+//		                 //如过for循环的判断部分被省略，则判断的结果就恒为真。
+//	}                    //就会一直循环。
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	int arr[10] = { 0,1,2,3,4,5,6,7,8,9 };
+//	for (i = 0; i < 10; i++)
+//	{
+//
+//		printf("%d\n", arr[i]);
+//	}
+//
+//
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		for (j = 0; j < 10; j++)
+//		{
+//			printf("hehe\n");
+//		}
+//
+//	}//打印出一百的hehe。
+//
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		for (; j < 10; j++)//如果此时省略for语句中的j=0，则只会打印出10个hehe
+//		{                  //因为j在第一次大循环的最后j=10，在第二次大循环的时候没有初始化
+//			printf("hehe\n");//直接跳出第二个循环。不能随便省略。
+//		}
+//
+//	}
+//
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	
+//	for (; i < 10; i++)
+//	{
+//		int j = 0;
+//		for (; j < 10; j++)
+//		{
+//			printf("hehe\n");
+//		}
+//
+//	}//打印出一百的hehe。
+//
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int x, y;
+//	for (x = 0, y = 0; x < 2 && y < 5; x++, y++)//x++为先用后加，++x为先加后用，但两者在此处的
+//	{                                           //作用相同。
+//
+//		printf("hehe\n");
+//	}
+//
+//
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	b = a++;
+//	printf("%d,%d", a, b);//a=1,b=0;
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	b = ++a;
+//	printf("%d,%d", a, b);//a=1,b=1;
+//
+//	return 0;
+//}
+int main()
+{
+	int k = 0;
+	int l = 0;
+	for (k = 0, l = 0; k == 0; k++, l++)//此处循环0次，因为判断语句是k=0，即把0赋值给了k，0为假
+	{
+		printf("hehe");
+		k++;                           //故不循环。
+	}
+
+	return 0;
+}

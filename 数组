@@ -1,0 +1,204 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+//数组是一组相同类型元素的集合；数组的创建方式
+//type_t arr_name[const_n]
+//type_t 是指数组的元素类型，const_n 是一个常量表达式，用来指定数组的大小。
+//sizeof 是操作符，求变量，类型，数组的大小，单位是字节
+//strlen 是函数只用于计算字符串的长度.不包括'\0'。
+//int main()
+//{
+//	int arr[10] = { 1,2,3 };// 不完全初始化，剩下的元素默认初始化为0。
+//	char arr2[3] = { 'a',98,'c' };//此处的98是字符'b'的ASCII码值，代表是'b'。
+//	char arr3[] = "wac";
+//	char arr4[] = "牛逼";
+//	printf("%s\n", arr4);
+//	char arr5[] = "abc";
+//	char arr6[] = { 'a','b','c' };
+//	printf("%d\n", sizeof(arr5));//4 arr5中有4个字符'a','b','c','\0';占用四个字节
+//	printf("%d\n", sizeof(arr6));//3 sizeof只关注与数组所占内存大小初始化中只有三个字符，故占用三个字节
+//	printf("%d\n", strlen(arr5));//3  strlen计算'\0',之前的字符个数，故字符串长度为3.
+//	printf("%d\n", strlen(arr5));//随机值  arr6中没有'\0',所以strlen无法计算字符串长度。
+//	return 0;
+//}
+//int  main()
+//{
+//
+//	int arr[] = { 1,2,3,4,5,67,7 };//整形数组的最后没有'\0'，
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//
+//
+//		printf("&arr[%d]=%p\n", i, &arr[i]);
+//	}
+//  //      & arr[0] = 000000740ACFF718
+//  //		& arr[1] = 000000740ACFF71C
+//  //		& arr[2] = 000000740ACFF720
+//  //		& arr[3] = 000000740ACFF724
+//  //		& arr[4] = 000000740ACFF728
+//  //		& arr[5] = 000000740ACFF72C
+//  //	    & arr[6] = 000000740ACFF730
+//  //数组在内存中是连续存放的，随着数组下标的增长，元素的地址也在增长，由低地址到高地址。相邻地址相差四个字节
+//   一个整形是四个字节
+//
+//	return 0;
+//}
+//二维数组的创建
+//int main()
+//{
+//	int arr[3][4] = { {1,2,3},{1,2,3,4} };//arr[行][列]，行可以省略，列不能省略。
+// //  第一行{1，2，3，0}，第二行{1，2，3，4}，第三行{0，0，0，0}
+//	int arr2[][2] = { 1,2,3 };
+//// 第一行{1，2}，第二行{3，0}。
+//
+//	return 0;
+//}
+//int main()
+//{
+//	int arr[3][4] = { {1,2,3,4},{5,6,7,8} };
+//	int i = 0;
+//	int m = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		for (m = 0; m < 4; m++)
+//			printf("&arr[%d][%d]=%p\n ",i,m,&arr[i][m]);
+//	
+//	}
+//	//  & arr[0][0] = 000000E4464FF508
+//	//	& arr[0][1] = 000000E4464FF50C
+//	//	& arr[0][2] = 000000E4464FF510
+//	//	& arr[0][3] = 000000E4464FF514
+//	//	& arr[1][0] = 000000E4464FF518
+//	//	& arr[1][1] = 000000E4464FF51C
+//	//	& arr[1][2] = 000000E4464FF520
+//	//	& arr[1][3] = 000000E4464FF524
+//	//	& arr[2][0] = 000000E4464FF528
+//	//	& arr[2][1] = 000000E4464FF52C
+//	//	& arr[2][2] = 000000E4464FF530
+//	//	& arr[2][3] = 000000E4464FF534
+//
+//	return 0;
+//}
+//#include<stdlib.h>
+//#include<time.h>
+//void menu()
+//{
+//	printf("****************\n");
+//	printf("*****1.PLAY*****\n");
+//	printf("*****0.EXIT*****\n");
+//	printf("****************\n");
+//}
+//void game()
+//{
+//	int ret = 0;
+//	int j = 0;
+//	
+//	ret = rand() % 100 + 1;
+//	
+//	while (1)
+//	{
+//		printf("请输入您猜的数字\n");
+//		scanf("%d", &j);
+//		if (j > ret)
+//			printf("猜大了\n");
+//		else if (j < ret)
+//			printf("猜小了\n");
+//		else
+//		{
+//			printf("猜对了\n");
+//			break;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int m = 0;
+//	srand((unsigned int)time(NULL));
+//	do
+//	{
+//		menu();
+//		printf("请输入您的选择\n");
+//		scanf("%d", &m);
+//		switch (m)
+//		{
+//		case(1):
+//			game();
+//			system("pause");
+//			system("cls");
+//		case(0):
+//			break;
+//		default:
+//			system("cls");
+//			break;
+//		}
+//	} while (m);
+//
+//	return 0;
+//
+//
+//
+//}
+//int main()
+//{
+//	int arr[3] = { 1,2,3 };
+//	printf("%p\n", &arr);// 0000764BEFFA38，首元素的地址
+//	int* pc = &arr[0];
+//	printf("%p\n", &arr[1]);// 000000764BEFFA3C，第二个元素的地址
+//	pc + 1;
+//	printf("%p\n", pc + 1);// 000000764BEFFA3C，首元素的地址加1，得第二个元素的地址。
+//	return 0;
+//}//数组中的某个元素得地址加1，可以得到与之相邻的下一个元素的地址。
+//void bubble_sort(int arr[], int sz)//冒泡排序，此处的 int arr[]本质上是int* arr
+//{
+//	int i = 0;
+//	int p = 0;
+//	int m = 0;
+//
+//	for (i = 0; i < sz-1; i++)//十个元素只需要进行（sz-1）趟排序，
+//	{
+//		int flag = 1;//假设数组有序。
+//		for (m = 0; m < (sz-i-1); m++)//第一趟排序比较（sz-1）次大小；
+//			                          第二趟排序比较（sz-1-1）次大小
+//		{                             //第n趟排序比较（sz-1-n）次大小
+//			if (arr[m] > arr[m + 1])
+//			{
+//				p = arr[m + 1];
+//				arr[m + 1] = arr[m];
+//				arr[m] = p;
+//				flag = 0;//数组不完全有序。
+//			}
+//		}
+//		if (flag == 1)
+//			break;
+//	}
+//	
+//}
+//int main()
+//{
+//	int i= 0;
+//	int arr[] = { 9,8,7,6,5,4,3,2,1,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	bubble_sort(arr,sz);
+//	for (i = 0; i < 10; i++)
+//		printf("%d ", arr[i]);
+//
+//
+//	return 0;
+// }
+//一般情况下，数组名为首元素的地址，有两个例外：
+//1，sizeof(数组名)-数组名表示整个数组，计算的是整个数组的大小。单位是字节。
+//2，&数组名，数组名代表整个数组，&数组名，取出的是整个数组的地址。
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7 };
+//	printf("%p\n", arr); //000000A4E7DBFBD8,首元素的地址
+//	printf("%p\n", arr+1);// 000000A4E7DBFBDC，地址加一为第二个元素的地址
+//	printf("%p\n", &arr[0]);// 000000A4E7DBFBD8，首元素的地址
+//	printf("%p\n", &arr[0]+1);// 000000A4E7DBFBDC 地址加一为第二个元素的地址
+//	printf("%p\n", &arr); //000000A4E7DBFBD8，数组的地址。
+//	printf("%p\n", &arr+1);// 000000A4E7DBFBF4，&arr+1，加了28，即一个数组的长度，4*7
+//
+//	return 0;
+//}

@@ -1,0 +1,208 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//int max(int x, int y)
+//{
+//	if (x > y)
+//	{
+//		printf("nsb");
+//		printf("nb");
+//		return x;
+//	}
+//		return y;
+//}
+//int main()
+//{
+//	int a = 11;
+//	int b = 13;
+//	int age = max(a, b);
+//	printf("%d\n", age);
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 55;
+//	if (a%2 == 0)
+//		printf("偶数");
+//	else
+//		printf("奇数"); 
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	while (i <= 100)
+//	{
+//		if (i % 2 == 1)
+//			printf("%d\n", i);
+//		i++;
+//	}
+//
+//	return 0;
+//}
+//switch(整形表达式)
+//{
+// case(整形常量表达式)：
+// 语句；
+// case(整形常量表达式)：
+// 语句；
+//case(整形常量表达式)：
+// 语句；
+//case(整形常量表达式)：
+// 语句；
+//case(整形常量表达式)：
+// 语句；
+//case(整形常量表达式)：
+// 语句；
+//}想要执行完结束的话可以加上break。
+//int main()
+//{
+//	int day = 0;
+//	scanf("%d", &day);
+//	switch (day)
+//	{
+//	case(1):
+//		printf("星期一\n");
+//			break;
+//	case(2):
+//		printf("星期二\n");
+//		break;
+//	case(3):
+//		printf("星期三\n");
+//		break;
+//	case(4):
+//		printf("星期四\n");
+//		break;
+//	case(5):
+//		printf("星期五\n");
+//		break;
+//	case(6):
+//		printf("星期六\n");
+//		break;
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int day = 0;
+//	scanf("%d", &day);
+//	switch (day)
+//	{
+//	case(1):
+//	case(2):
+//	case(3):
+//	case(4):
+//	case(5):
+//		printf("工作日\n");
+//		break;
+//	case(6):
+//	case(7):
+//		printf("休息日\n");
+//		break;
+//	default:
+//		printf("输入错误\n");
+//		break;//可以在结尾加上default用来处理不在范围里的输入值。
+//	}//default用来处理非法的情况；
+//	return 0;
+//}如果多个case语句的执行结果相同可以按照上述代码书写；
+//利用swith语句不遇到break不会停止的特性；switch语句中可以加入if语句
+//switch语句中不能出现continue；switch语句可以嵌套使用；
+//int main()
+//{
+//	int a = 0;
+//	int b = 1;
+//	switch (a)
+//	{
+//	case 0:
+//		a++;
+//		b++;
+//	case 1:
+//		a++;
+//		b++;
+//	case 3:
+//		switch (b)
+//		{case 3:
+//			while (b >= 3 && b <= 100)
+//			{
+//				if (b % 2 != 1)
+//					printf("%d\n", b);
+//				b++;
+//			}
+//			break;
+//		}
+//		break;
+//	}
+//	printf("a=%d,b=%d", a, b);
+//
+//
+//
+//
+//
+//	 
+//
+//
+//
+//
+//
+//	return 0;
+//}
+#include<stdlib.h>
+#include<time.h>
+#include<stdio.h>
+#define _CRT_SECURE_NO_WARNINGS
+#include<math.h>
+#include<string.h>
+void menu()//menu 是生成菜单的意思应为他没有返回的值和接受的值，void 关键字指定函数不返回值
+{
+    printf("*********************\n");
+    printf("*****1.PLAY**********\n");
+    printf("*****0.EXIT**********\n");
+    printf("*********************\n");
+}
+void game()
+{
+    int m = 0;
+    int ret = 0;
+    ret = rand() % 100 + 1;//将ret控制在1-100间
+    while (1)
+    {
+        printf("请输入猜的数字：\n");
+        scanf("%d", &m);
+        if (m > ret)
+            printf("猜大了\n");
+        else if (m < ret)
+            printf("猜小了\n");
+        else
+        {
+            printf("恭喜你猜对了\n");
+            break;
+        }
+    }
+}
+int main() //unsigned int 意思是强行转化为无符号的int类型
+{                                    //用时间戳为srand函数提供一个不断变化的值。
+    srand((unsigned int)time(NULL));// time 函数根据系统时钟返回自协调世界时(UTC) 1970 年 1 月 1 日午夜(00:00 : 00) 以来经过的秒数。
+    int choice = 0;                 //NULL 是用于许多指针操作和函数的 null 指针值。 它等效于 0。
+    do                               //srand函数设置 rand 函数使用的伪随机数生成器的起始种子值。
+    {                                //srand函数在整个程序里只用设置一次就行了，执行的太多随机数就不随机了
+        menu();
+        printf("请输入您的选择：\n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case(1):
+            game();
+            system("pause");//停顿
+            system("cls");//清屏
+            break;
+        case(0):
+            printf("程序退出\n");
+            break;
+        default:
+            system("cls");
+            break;
+
+        }
+
+    } while (choice);
+    return 0;
+}
