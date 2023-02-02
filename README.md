@@ -1,1 +1,1 @@
-# c 语言学习，记录学习过程
+# learning c language  recording my process
