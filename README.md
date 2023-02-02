@@ -1,1 +1,1 @@
-# learning c language  recording my process
+# learning c language and recording my process
