@@ -1,0 +1,390 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+//键盘是标准输入流stdin
+//屏幕是标准输出流stdout
+//数据文件又被称为文本文件和二进制文件
+// 数据在内存中以二进制的形式储存，如果不加转换的输出到外存，就是二进制文件
+// 如果在外存上以ASCII码值的形式存储，则需要在存储前转换，文件就叫文本文件。
+// 如果从磁盘中向计算机读入数据。则从磁盘文件中读取数据输入到内存缓冲区（充满缓冲区），然后再从缓冲区逐个将数据送到程序数据区。内存缓冲区的大小由编译器决定
+//当前路径是源.cpp
+//fopen 函数打开文件
+//文件打开成功会先创建以一个FILE结构体来储存文件信息，返回结构体的起始位置（类型是FILE*） ，来建立两者之间的关系
+// 打开失败不会创建FILE结构体
+//FILE* fopen(const char* filename,const char* mode) mode是打开方式
+//int fclose(FILE* stream)
+//int main()
+//{
+//	FILE* M=fopen("text.txt", "r");//  相对路径
+//	                               //  .表示当前路径；..表示上一路径
+//	//FILE* M = fopen("D:\\CODE\\文件操作\\text.txt", "r");绝对路径，使用绝对路径时要注意转义字符。
+//	if (M == NULL)
+//	{
+//		printf("%s", strerror(errno));
+//		return 0;
+//	}
+//	M->_Placeholder = (void*)"ABCD";
+//	fclose(M);
+//	M = NULL;
+//	return 0;
+//}'r'读的操作，如果打开失败，返回NULL；
+//int main()
+//{
+//	FILE* M = fopen("text.txt", "w");//
+//	//'w'的操作，打开失败会创建一个"test.txt（和要打开的文件名相同的文件）"的文件，于此相同的操作，均有此做法
+//	//打开成功，也会创建一个和要打开的文件一模一样的文件覆盖之前的文件。
+//	fclose(M);
+//	M = NULL;
+//	return 0;
+//}
+/*int main()
+{
+	FILE* M = fopen("text.txt", "a");
+	fclose(M);
+	M = NULL;
+	return 0;
+}*///'a'追加的操作打开，不会新建一个文件，失败返回NULL：
+// int fputc(int c,FILE* stream);c是字符 ，stream 是一个指针指向输出流。在程序数据区输出一个字符到磁盘文件内
+// int fgetc(FILE* stream);stream 是一个指针指向输入流,输入一个字符来自输入流。在磁盘文件中输入一个字符到程序数据区。读完一个自动读下一个
+//int  main()
+//{
+//	FILE* m = fopen("test.txt", "w");
+//	fputc('m', m);//在文件里输出一个字符
+//	fclose(m);
+//	m = NULL;
+//	return 0;
+//}
+//int main()
+//{
+//	FILE* m = fopen("test.txt", "r");
+//	if (m == NULL)
+//	{
+//		printf("%s", strerror(errno));
+//		return 0;
+//	}printf("%c", fgetc(m));
+//	fclose(m);
+//	m = NULL;
+//	return 0;
+//}
+//char * fgets ( char * str, int num, FILE * stream );
+//  str 是读取文件内存存储的数组名 
+//  num 是 最大能读取字符个数。
+//  stream 是FILE*指向输入流。
+//int main()
+//{
+//	FILE* m = fopen("test.txt", "w");
+//	char buf[120] = { 0 };
+//	fputs("hello world\n",m);//将hello world\n输出到磁盘中
+//	fputs("hello bit", m);//将hello bit输出到磁盘中
+//	fclose(m);
+//	m = NULL;
+//	return 0;
+//}
+//int main()
+//{
+//	FILE* m = fopen("test.txt", "r");
+//	if (m == NULL)
+//	{
+//		printf("%s\n", strerror(errno));
+//		return 0;
+//	};
+//	char buf[120] = { 0 };
+//	fgets(buf,120, m);//读取磁盘文件120个字符输入到buf中
+//	printf("%s", buf);
+//	fgets(buf, 120, m);//读取磁盘文件120个字符输入到buf中
+//	printf("%s", buf);
+//	fclose(m);
+//	m = NULL;
+//	return 0;
+//
+//
+//}
+//int main()
+//{
+//	char buf[120] = { 0 };//不是进行文件操作。
+//	fgets(buf, 120, stdin);//从标准输入流（键盘）读取输入。
+//	fputs(buf, stdout);//输出到标准输出流（屏幕）。
+//	return 0;
+//}
+//int printf(const char* format, ...)；默认是标准输出流，输出到屏幕上
+//int fprintf(FILE* stream, const char* format, ...)输出到指定的输出流（文件）
+//int scanf(const char* format, ...)；默认是标准输入流，键盘输入
+//int fscanf(FILE* stream, const char* format, ...)；从指定的输入流输入。
+//typedef struct S
+//{
+//	int n;
+//	char arr[20];
+//	float j;
+//
+//}S;
+//int  main()
+//{
+//	S s1 = { 100,"hello world",3.14f };
+//	FILE* ps=fopen("test.txt", "w");
+// 	if (ps == NULL)
+//	{
+//		printf("%s\n", strerror(errno));
+//		return 0;
+//	};
+//	fprintf(ps, "%d %s %f", s1.n, s1.arr, s1.j);//输出的字符串可以有空格，会出错
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+//int  main()
+//{
+//	S s2 = { 0 };
+//	FILE* ps = fopen("test.txt", "r");
+//	fscanf(ps, "%d %s %f", &s2.n ,s2.arr,&s2.j);//输入的字符串中不能有空格。
+//	
+//	printf("%d, %s, %f", s2.n, s2.arr,s2.j);
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+//int main()
+//{
+//	S s1={0};
+//	fscanf(stdin, "%d %s %f", &s1.n, s1.arr, &s1.j);//输入的字符串不能有空格
+//	fprintf(stdout, "%d,%s,%f", s1.n, s1.arr, s1.j);//
+//
+//
+//	return 0;
+//}
+//int sprintf (char * s, const char * format, ...)将格式化的数据转换为字符存放到（输出到）字符串中
+//int sscanf ( const char * s, const char * format, ...)从字符串中读取（输出）格式化数据
+// 
+//typedef struct U
+//{
+//	int n;
+//	float j;
+//	char arr[10];
+//}U;
+//int main()
+//{
+//	char buff[120] = { 0 };
+//	U u1 = { 100,3.14f,"bit" };
+//	U tmp = { 0 };
+//	sprintf(buff, "%d %f %s", u1.n, u1.j, u1.arr);//将格式化的数据转换为字符存放到（输出到）字符串中； 100是转化为"100"字符串
+//	sscanf( buff, "%d %f %s",  &(tmp.n),&(tmp.j), tmp.arr);//从字符串中读取（输出）格式化数据。只有含printf 的函数在scanf前面  格式要保持一致 前面是%d %f %s 前面是%d ，%f ，%s
+//	printf("%s\n", buff);                                                                                                                     后面是%d %f %s 后面是%d ，%f ，%s
+//	printf("%d, %f, %s",tmp.n,tmp.j ,tmp.arr);
+//	return 0;
+//}
+//int main()
+//{
+//	FILE* ps=fopen("xiaodu.txt", "w");
+//	fputc('w', ps);
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+//int main()
+//{
+//	char buff = 0;
+//	FILE* ps = fopen("xiaodu.txt", "r");
+//	if (ps == NULL)
+//	{
+//		printf("%s", strerror(errno));
+//		return 0;
+//	}
+//	printf("%c",fgetc(ps));
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+//int main()
+//{
+//	char buff[1024] = { 0 };
+//	FILE* ps = fopen("xiaodu.txt", "w");
+//	fputs("xiaoduzhennianren", ps);
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+//int main()
+//{
+//	char buff[120] = { 0 };
+//	FILE* ps = fopen("xiaodu.txt", "r");
+//	if (ps == NULL)
+//	{
+//		printf("%s", strerror(errno));
+//		return 0;
+//	}
+//	fgets(buff, 120, ps);
+//	printf("%s", buff);
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+//typedef struct S
+//{
+//	char arr[20];
+//	int i;
+//	char v;
+//}S;
+//int main()
+//{
+//	S s1 = { 0 };
+//	fscanf(stdin, "%s %d %c", s1.arr, &s1.i, &s1.v);
+//	fprintf(stdout, "%s %d %c", s1.arr, s1.i, s1.v);
+//	return 0;
+//}
+//int main()
+//{
+//	S s1 = {"abcdef",9,'g'};
+//	FILE* ps = fopen("xiaodu.txt", "w");
+//	fprintf(ps, "%s %d %c", s1.arr, s1.i, s1.v);
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+//int main()
+//{
+//	S s1 = { 0 };
+//	FILE* ps = fopen("xiaodu.txt", "r");
+//	if (ps == NULL)
+//	{
+//		printf("%s", strerror(errno));
+//		return 0;
+//	}
+//	fscanf(ps, "%s %d %c", s1.arr, &s1.i, &s1.v);
+//	printf("%s %d %c", s1.arr, s1.i, s1.v);
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+//int  main()
+//{
+//	char buff[102] = { 0 };
+//	S s1 = { "abcdef",9,'g' };
+//	sprintf(buff, "%s %d %c ", s1.arr, s1.i, s1.v);
+//	printf("%s", buff);
+//	sscanf(buff, "%s %d %c", s1.arr, &s1.i, &s1.v);
+//	printf("%s %d %c", s1.arr, s1.i, s1.v);
+//	return 0;
+//}
+//int main()
+//{
+//	char buff[1024] = { 0 };
+//	fgets(buff, 1024, stdin);
+//	fputs(buff, stdout);
+//
+//}
+//int main()
+//{
+//	char buff;
+//	buff=fgetc(stdin);
+//	fputc(buff, stdout);
+//}
+//size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream);//以二进制的方式写入
+// ptr是要写入元素（数组）的地址，size是每个元素的大小，count 是要写入这种元素的个数，stream 是写入的文件
+// 
+//size_t fread(void* ptr, size_t size, size_t count, FILE* stream);//二进制输出
+//ptr  是将从stream中读取的信息存放的地址，size是要读取的每个元素的大小，count是读取元素的个数 ，stream 是读取的文件
+//
+//typedef struct S
+//{
+//	int age;
+//	char name[20];
+//	double score;
+//}S;
+//int main()
+//{
+//	S s1 = { 10,"张三",9.31 };
+//	FILE* ps=fopen("xiaodu.txt", "wb");
+//	fwrite(&s1, sizeof(struct S),1, ps);
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+//int main()
+//{
+//	S tmp = { 0 };
+//	FILE* ps = fopen("xiaodu.txt", "rb");
+//	fread(&tmp, sizeof(struct S), 1, ps);
+//	printf("%d %s %lf", tmp.age, tmp.name, tmp.score);
+//	return 0;
+//}
+//fprintf ,fscanf,fgets,fputs,fputc,fgetc都是顺序读写 
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	memmove(arr, arr + 5, 5 * sizeof(int));
+//}
+//fseek随机读取
+//int fseek ( FILE * stream, long int offset, int origin )定位文件指针的函数，（将指针定位到相对于origin 偏移量为offset处的地址）
+//stream 是一个指向文件的指针
+//offset是偏移量
+//origin是文件指针的位置有三种情况
+//1，SEEK_CUR  文件指针的当前位置
+//2，SEEK_END  文件的末尾地址，（最后一个元素的下一个地址）
+//3，SEEK_SET  文件的起始位置
+// int ftell（ FILE * stream）返回文件指针相对于起始位置的偏移量
+// void rewind(FILE * stream)将文件指针恢复到起始位置。
+//int main()
+//{
+//	FILE* ps = fopen("we.txt", "w");
+//	fputs("abcdefg", ps);
+//	fclose(ps);
+//	ps = NULL;
+//	return 0;
+//}
+
+//int main()
+//{
+//	int pos = 0;
+//	FILE* ps = fopen("we.txt", "r");
+//	fseek(ps, 2, SEEK_SET);//成功返回0，失败返回非0,函数调用成功后，文件指针就到了用户设置的位置。
+//	pos=ftell(ps);
+//	printf("%d", pos);
+//	int  ch = fgetc(ps);//c
+//	printf("%c", ch);
+//	fseek(ps, -2, SEEK_END);//f
+//	ch = fgetc(ps);//每次读取一个字符 。文件指针都会向后跳动一个步长
+//	printf("%c", ch);	//文件指针位于f的地址 。
+//	fseek(ps, -1, SEEK_CUR);//此时文件指针位于g的地址。偏移量是-1，则文件指针位于f的地址。
+//	ch = fgetc(ps);
+//	printf("%c", ch);
+//	rewind(ps);
+//	ch = fgetc(ps);
+//	printf("%c", ch);//f
+//		fclose(ps);
+//		ps = NULL;
+//	
+//	return 0;
+//}
+//perror也是错误信息报告函数类似strerror。但是用法更加简单，函数会先打印括号内的信息，然后打印错误码对应的错误信息。
+//int main()
+//{   
+//	FILE* ps = fopen("tse.sda", "r");
+//	perror("failed");
+//	return 0;
+//}
+//牢记：在文件读取过程中，不能用feof函数的返回值直接用来判断文件的是否结束。
+//而是应用于当文件读取结束的时候 ，判断是读取失败结束，还是遇到文件尾结束。
+// 
+// 
+//1. 文本文件读取是否结束 ，判断返回值是否为EOF （fgetc） ，或者NULL(fgets)
+//例如：
+//fgetc判断是否为EOF.
+//fgets判断返回值是否为NULL
+//2.二进制文件的读取结束判断 ，判断返回值是否小于实际要读的个数
+// fread判断返回值是否小于实际要读的个数。
+//如果在读取过程中遇到错误导致读取结束，那么ferror函数就会返回一个非0的值，其他情况返回0
+//如果读取过程中正常结束（遇到EOF），那么feof函数就会返回一个非0的值，其他情况返回0；
+int main()
+{
+	int ch = 0;
+	FILE* ps = fopen("we.txt", "r");
+	while ((ch = fgetc(ps)) != EOF)
+		fputc(ch, stdout);
+	if (ferror(ps))
+		printf("ERROE\n");
+	else if (feof(ps))
+		printf("NORMSL\n");
+	fclose(ps);
+	ps = NULL;
+	return 0;
+}
